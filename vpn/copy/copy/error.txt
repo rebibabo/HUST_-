@@ -1,0 +1,78 @@
+client.c: In function ‘printLog’:
+client.c:18:7: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+  file = fopen("log", "a+");
+       ^
+client.c:19:10: warning: passing argument 1 of ‘fprintf’ makes pointer from integer without a cast [-Wint-conversion]
+  fprintf(file, "%s", info);
+          ^
+In file included from /usr/include/openssl/crypto.h:125:0,
+                 from /usr/include/openssl/comp.h:5,
+                 from /usr/include/openssl/ssl.h:149,
+                 from client.c:2:
+/usr/include/stdio.h:356:12: note: expected ‘FILE * restrict {aka struct _IO_FILE * restrict}’ but argument is of type ‘int’
+ extern int fprintf (FILE *__restrict __stream,
+            ^
+client.c:20:9: warning: passing argument 1 of ‘fclose’ makes pointer from integer without a cast [-Wint-conversion]
+  fclose(file);
+         ^
+In file included from /usr/include/openssl/crypto.h:125:0,
+                 from /usr/include/openssl/comp.h:5,
+                 from /usr/include/openssl/ssl.h:149,
+                 from client.c:2:
+/usr/include/stdio.h:237:12: note: expected ‘FILE * {aka struct _IO_FILE *}’ but argument is of type ‘int’
+ extern int fclose (FILE *__stream);
+            ^
+client.c: In function ‘listen_tun’:
+client.c:183:15: warning: implicit declaration of function ‘read’ [-Wimplicit-function-declaration]
+         len = read(ptd->tunfd, buff, 2000);  // 从TUN设备读取数据
+               ^
+client.c: In function ‘main’:
+client.c:287:9: warning: implicit declaration of function ‘write’ [-Wimplicit-function-declaration]
+         write(tunfd, buf, len);
+         ^
+server.c: In function ‘printLog’:
+server.c:30:7: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+  file = fopen("log", "a+");
+       ^
+server.c:31:10: warning: passing argument 1 of ‘fprintf’ makes pointer from integer without a cast [-Wint-conversion]
+  fprintf(file, "%s", info);
+          ^
+In file included from server.c:3:0:
+/usr/include/stdio.h:356:12: note: expected ‘FILE * restrict {aka struct _IO_FILE * restrict}’ but argument is of type ‘int’
+ extern int fprintf (FILE *__restrict __stream,
+            ^
+server.c:32:9: warning: passing argument 1 of ‘fclose’ makes pointer from integer without a cast [-Wint-conversion]
+  fclose(file);
+         ^
+In file included from server.c:3:0:
+/usr/include/stdio.h:237:12: note: expected ‘FILE * {aka struct _IO_FILE *}’ but argument is of type ‘int’
+ extern int fclose (FILE *__stream);
+            ^
+server.c: In function ‘setupTLSServer’:
+server.c:145:7: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  meth = SSLv23_server_method();
+       ^
+server.c: In function ‘listen_pipe’:
+server.c:231:10: warning: passing argument 1 of ‘fprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
+  fprintf(info, "[info]  关闭连接，删除管道文件%s\n", ptd->pipe_file);
+          ^
+In file included from server.c:3:0:
+/usr/include/stdio.h:356:12: note: expected ‘FILE * restrict {aka struct _IO_FILE * restrict}’ but argument is of type ‘char *’
+ extern int fprintf (FILE *__restrict __stream,
+            ^
+server.c: In function ‘main’:
+server.c:272:56: warning: backslash and newline separated by space
+   \\ V /| |_）| | | | \\__ \\  __/ |   \\ V /  __/ |\n\   
+                                                        ^
+server.c:273:55: warning: backslash and newline separated by space
+    \\_/ | .__/|_| |_| |___/\\___|_|    \\_/ \\___|_|\n\   
+                                                       ^
+server.c:274:13: warning: backslash and newline separated by space
+        | |\n\                                         
+             ^
+server.c:283:2: warning: implicit declaration of function ‘mkdir’ [-Wimplicit-function-declaration]
+  mkdir("pipe", 0666);
+  ^
+server.c:357:9: warning: implicit declaration of function ‘mkfifo’ [-Wimplicit-function-declaration]
+     if (mkfifo(pipe_file, 0666) < 0) {
+         ^
